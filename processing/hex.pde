@@ -3,12 +3,14 @@ class Hexagon {
   float angle = 360.0 / 6;
   boolean selected = false;
   boolean dirty = false;
+  int i,j;
   PShape hex;
-  Hexagon(float cx, float cy, float r)
-  {
-    x=cx;
-    y=cy;
-    radi=r;
+  Hexagon(float left, float top, float r , int _i, int _j){
+    x = left + r;
+    y = top + r;
+    radi = r;
+    i = _i;
+    j = _j;
     buildShape();
   }
 
@@ -23,12 +25,12 @@ class Hexagon {
       hex.vertex(x + radi * cos(radians(angle * i)), y + radi * sin(radians(angle * i)));
     }
 
-    if (selected) fill(0, 162, 255);
-    else fill(abs(x-mouseX), abs(y-mouseY), 255-dist(mouseX, mouseY, x, y));
+//    if (selected) fill(0, 162, 255);
+//    else fill(255,255,255);
 
-    stroke(0);
-
+    stroke(0,55);
     hex.endShape(CLOSE);
+    
     dirty = false;
   }
   void toggle() {
